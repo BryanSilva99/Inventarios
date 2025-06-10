@@ -19,7 +19,6 @@ public class Ficha {
     private String usuario;
     private String sede;
     private String centroDeCosto;
-    private String jefedeCentrodeCosto;
     private String ubicacionFisica;
     private String tipoDeVerificacion;
     private Date date;

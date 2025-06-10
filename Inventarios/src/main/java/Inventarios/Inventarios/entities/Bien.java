@@ -1,9 +1,6 @@
 package Inventarios.Inventarios.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,14 +13,18 @@ public class Bien {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(unique = true)
     private String codigoAnterior;
+    @Column(unique = true)
     private String codigoPatrimonial;
+    @Column(unique = true)
     private String codigoActual;
     private String denominacion;
     private String marca;
     private String modelo;
     private String tipo;
     private String color;
+    @Column(unique = true)
     private String serie;
     private String dimensiones;
     private Character situacion;
