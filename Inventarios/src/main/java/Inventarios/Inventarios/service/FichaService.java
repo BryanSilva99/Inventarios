@@ -5,8 +5,8 @@ import Inventarios.Inventarios.entities.Ficha;
 import java.util.List;
 
 public interface FichaService {
-    void agregarBien(Ficha ficha);
-    Ficha buscarBienPorId(Integer id);
-    List<Ficha> listarBienes();
-    void borrarBienPorId(Integer id);
+    void agregarFicha(Ficha ficha);
+    Ficha buscarFichaPorId(Integer id);
+    List<Ficha> listarFichas();
+    void borrarFichaPorId(Integer id);
 }

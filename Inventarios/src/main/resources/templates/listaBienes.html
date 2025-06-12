@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Bienes</title>
+</head>
+<body>
+<table class="table" th:objet="${listaBienes}">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Cod. Actual</th>
+    <th scope="col">Cod. Patrimonial</th>
+    <th scope="col">Denominacion</th>
+    <th scope="col">Marca</th>
+    <th scope="col">Modelo</th>
+    <th scope="col">Tipo</th>
+    <th scope="col">Serie o Dimension</th>
+    <th scope="col">Color</th>
+    <th scope="col">Situacion</th>
+    <th scope="col">Estado</th>
+    <th scope="col">Observaciones</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="b:${listaBienes}">
+    <th scope="row">1</th>
+    <td th:text="${b.codigoActual}"></td>
+    <td th:text="${b.codigoPatrimonial}"></td>
+    <td th:text="${b.codigoAnterior}"></td>
+    <td th:text="${b.denominacion}"></td>
+    <td th:text="${b.marca}"></td>
+    <td th:text="${b.modelo}"></td>
+    <td th:text="${b.tipo}"></td>
+    <td th:text="${b.color}"></td>
+    <td th:text="${b.serie}"></td>
+    <td th:text="${b.situacion}"></td>
+    <td th:text="${b.estado}"></td>
+    <td th:text="${b.observaciones}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>

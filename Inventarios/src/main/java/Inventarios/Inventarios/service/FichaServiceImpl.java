@@ -14,22 +14,22 @@ public class FichaServiceImpl implements FichaService{
     private FichaRepository fichaRepository;
 
     @Override
-    public void agregarBien(Ficha ficha) {
+    public void agregarFicha(Ficha ficha) {
         fichaRepository.save(ficha);
     }
 
     @Override
-    public Ficha buscarBienPorId(Integer id) {
+    public Ficha buscarFichaPorId(Integer id) {
         return fichaRepository.findById(id).orElseThrow();
     }
 
     @Override
-    public List<Ficha> listarBienes() {
+    public List<Ficha> listarFichas() {
         return fichaRepository.findAll();
     }
 
     @Override
-    public void borrarBienPorId(Integer id) {
+    public void borrarFichaPorId(Integer id) {
         fichaRepository.deleteById(id);
     }
 }

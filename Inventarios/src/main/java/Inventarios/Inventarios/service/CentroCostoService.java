@@ -8,6 +8,6 @@ import java.util.List;
 public interface CentroCostoService {
     void agregarCentroCosto(CentroCosto centroCosto);
     CentroCosto buscarBienPorId(Integer id);
-    List<CentroCosto> listarBienes();
+    List<CentroCosto> listarCentrosCosto();
     void borrarBienPorId(Integer id);
 }

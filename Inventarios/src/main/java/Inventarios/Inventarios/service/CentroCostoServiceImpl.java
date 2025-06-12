@@ -26,7 +26,7 @@ public class CentroCostoServiceImpl implements CentroCostoService {
     }
 
     @Override
-    public List<CentroCosto> listarBienes() {
+    public List<CentroCosto> listarCentrosCosto() {
         return centroCostoRepository.findAll();
     }
 
