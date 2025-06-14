@@ -10,4 +10,5 @@ public interface BienService {
     Bien buscarBienPorId(Integer id);
     List<Bien> listarBienes();
     void borrarBienPorId(Integer id);
+    List<Bien> encontrarBienesPorId(List<Integer> bienesPorId);
 }

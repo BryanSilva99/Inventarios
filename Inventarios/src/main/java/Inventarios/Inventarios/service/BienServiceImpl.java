@@ -32,4 +32,11 @@ public class BienServiceImpl implements BienService{
     public void borrarBienPorId(Integer id) {
         bienRepository.deleteById(id);
     }
+
+    @Override
+    public List<Bien> encontrarBienesPorId(List<Integer> bienesPorId) {
+        return bienRepository.findAllById(bienesPorId);
+    }
+
+
 }
