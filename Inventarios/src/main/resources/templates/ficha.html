@@ -11,7 +11,7 @@
     <form th:object="${ficha}" th:action="@{/ficha}" method="post" >
         <div class="mb-3">
             <label for="sede" class="form-label">Sede</label>
-            <input type="text"  th:field="*{sede}" class="form-control" id="sede" aria-describedby="emailHelp">
+            <input type="text"  th:field="*{sede}" class="form-control" id="sede" aria-describedby="emailHelp" th:text="*{sede}">
 <!--            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
         </div>
         <label>Centro de Costo</label>
@@ -26,25 +26,8 @@
             <input type="text" class="form-control" th:field="*{ubicacionFisica}" id="ubicacionFisica" aria-describedby="emailHelp">
             <!--            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>-->
         </div>
-        <table class="table" th:objet="${listaBienes}">
-            <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="b:${listaBienes}">
-                <th th:text="${b.codigoActual}"></th>
-                <td th:text="${b.denominacion}"></td>
-                <td>
-                    <input type="checkbox" name="bienesSeleccionados" th:value="${b.id}">
-                </td>
-            </tr>
-            </tbody>
-        </table>
+        <a th:href="@{/listaBienesSeleccion }" class="btn btn-secondary">Seleccionar Bien</a>
+
         <button type="submit" class="btn btn-primary">Enviar</button>
     </form>
 </div>

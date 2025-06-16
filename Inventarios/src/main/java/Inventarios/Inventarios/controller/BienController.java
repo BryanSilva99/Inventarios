@@ -35,4 +35,13 @@ public class BienController {
         model.addAttribute("listaBienes",listaBienes);
         return "listaBienes";
     }
+
+    @GetMapping("/listaBienesSeleccion")
+    public String listaBienesSeleccion(Model model){
+        List<Bien> listaBienes= bienService.listarBienes();
+        model.addAttribute("listaBienes",listaBienes);
+        return "listaBienesSeleccion";
+    }
+
+
 }
