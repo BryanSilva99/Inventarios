@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,4 +33,6 @@ public class Bien {
     private Character situacion;
     private Character estado;
     private String observaciones;
+    @ManyToMany(mappedBy = "bienes")
+    private Set<Ficha> fichas = new HashSet<>();
 }

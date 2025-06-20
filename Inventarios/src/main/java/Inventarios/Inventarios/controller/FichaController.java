@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @SessionAttributes("ficha")
@@ -27,27 +28,37 @@ public class FichaController {
     @Autowired
     private BienService bienService;
 
-    @ModelAttribute("fichaForm")
+    @ModelAttribute("ficha")
     public Ficha crearFicha() {
         return new Ficha();  // Objeto que almacena toda la ficha completa
     }
 
     @GetMapping("/ficha")
-    public String crearFicha(Model model, LocalDateTime date){
+    public String crearFicha(Model model){
         Ficha ficha = new Ficha();
         model.addAttribute("ficha",ficha);
         List<CentroCosto> centrosCosto = centroCostoService.listarCentrosCosto();
-        List<Bien> listaBienes = bienService.listarBienes();
         model.addAttribute("listaCentrosCosto",centrosCosto);
-        model.addAttribute("listaBienes",listaBienes);
         return "ficha";
     }
 
-    @PostMapping("/ficha")
-    public String guardarFicha(@RequestParam List<Integer>bienesSeleccionados , @ModelAttribute Ficha ficha){
-        List<Bien> bienes = bienService.encontrarBienesPorId(bienesSeleccionados);
+
+    @PostMapping("/fichaBienes")
+    public String seleccionarBienes(@ModelAttribute("ficha")  Ficha ficha){
+        return "redirect:/listaBienesSeleccion";
+    }
+
+
+    @PostMapping("/fichaResumen")
+    public String guardarFicha(@RequestParam Set<Integer>bienesSeleccionados , @ModelAttribute("ficha") Ficha ficha){
+        Set<Bien> bienes = bienService.encontrarBienesPorId(bienesSeleccionados);
         ficha.setBienes(bienes);
         fichaService.agregarFicha(ficha);
-        return "redirect:/ficha";
+        return "redirect:/fichas";
+    }
+
+    @GetMapping("/fichas")
+    public String listaFichas(@ModelAttribute("ficha")  Ficha ficha){
+        return "fichas";
     }
 }

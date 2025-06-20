@@ -5,7 +5,9 @@ import Inventarios.Inventarios.repositories.BienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class BienServiceImpl implements BienService{
@@ -34,8 +36,8 @@ public class BienServiceImpl implements BienService{
     }
 
     @Override
-    public List<Bien> encontrarBienesPorId(List<Integer> bienesPorId) {
-        return bienRepository.findAllById(bienesPorId);
+    public Set<Bien> encontrarBienesPorId(Set<Integer> bienesPorId) {
+        return new HashSet<>(bienRepository.findAllById(bienesPorId));
     }
 
 

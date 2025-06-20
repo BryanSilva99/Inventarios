@@ -1,6 +1,7 @@
 package Inventarios.Inventarios.controller;
 
 import Inventarios.Inventarios.entities.Bien;
+import Inventarios.Inventarios.entities.Ficha;
 import Inventarios.Inventarios.service.BienService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,7 +38,7 @@ public class BienController {
     }
 
     @GetMapping("/listaBienesSeleccion")
-    public String listaBienesSeleccion(Model model){
+    public String listaBienesSeleccion(@ModelAttribute("ficha")Ficha ficha, Model model){
         List<Bien> listaBienes= bienService.listarBienes();
         model.addAttribute("listaBienes",listaBienes);
         return "listaBienesSeleccion";
