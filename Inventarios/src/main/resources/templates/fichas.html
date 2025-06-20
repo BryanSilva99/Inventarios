@@ -21,7 +21,7 @@
     <label th:text="*{getDate()}"></label>
 </div>
 
-    <table class="table" th:objet="${ficha}">
+    <table class="table" th:object="${ficha}">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -37,6 +37,7 @@
         </tr>
         </tbody>
     </table>
+    <a th:href="@{/reporte}" target="_blank">Ver reporte PDF</a>
 </div>
 </body>
 </html>
