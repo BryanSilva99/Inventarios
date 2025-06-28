@@ -33,6 +33,6 @@ public class Bien {
     private Character situacion;
     private Character estado;
     private String observaciones;
-    @ManyToMany(mappedBy = "bienes")
-    private Set<Ficha> fichas = new HashSet<>();
+    @ManyToMany(mappedBy = "bienes")            // la relacion es many to many porque un bien podria existir en multiples fichas y una ficha puede tener muchos bienes;
+    private Set<Ficha> fichas = new HashSet<>();    // se cambio el uso de List por Set para evitar el duplicado de elementos
 }

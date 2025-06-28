@@ -17,6 +17,7 @@ import java.util.Set;
 
 @Controller
 @SessionAttributes("ficha")
+@RequestMapping("/ficha")
 public class FichaController {
 
     @Autowired
@@ -33,7 +34,7 @@ public class FichaController {
         return new Ficha();  // Objeto que almacena toda la ficha completa
     }
 
-    @GetMapping("/ficha")
+    @GetMapping("/fichaCrear")
     public String crearFicha(Model model){
         Ficha ficha = new Ficha();
         model.addAttribute("ficha",ficha);
