@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -40,7 +39,7 @@ public class FichaController {
         model.addAttribute("ficha",ficha);
         List<CentroCosto> centrosCosto = centroCostoService.listarCentrosCosto();
         model.addAttribute("listaCentrosCosto",centrosCosto);
-        return "ficha";
+        return "fichaCrear";
     }
 
 
@@ -55,11 +54,11 @@ public class FichaController {
         Set<Bien> bienes = bienService.encontrarBienesPorId(bienesSeleccionados);
         ficha.setBienes(bienes);
         fichaService.agregarFicha(ficha);
-        return "redirect:/fichas";
+        return "redirect:/ficha/fichas";
     }
 
     @GetMapping("/fichas")
     public String listaFichas(@ModelAttribute("ficha")  Ficha ficha){
-        return "fichas";
+        return "fichaResumen";
     }
 }

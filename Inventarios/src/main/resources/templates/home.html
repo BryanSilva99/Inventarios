@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Inicio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .main-content {
+            padding: 40px 30px;
+        }
+
+        .card {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+        }
+
+        .card-title {
+            font-weight: 600;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .welcome-text {
+            font-size: 1.1rem;
+            color: #6c757d;
+        }
+    </style>
 </head>
 <body>
-<h1>HOME</h1>
+<!-- Navbar -->
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<!-- Contenido principal -->
+<div class="container main-content mt-5 pt-5">
+    <h2>Hola, <span th:text="${#authentication.principal.firstname + ' ' + #authentication.principal.lastname}">Usuario</span> 👋</h2>
+    <p class="welcome-text">Bienvenido al sistema de gestión de inventario. Aquí puedes revisar el estado de tus bienes, registrar nuevos y generar fichas de control.</p>
+    <p th:text="${#authentication.authorities}"></p>
+    <div class="row mt-4">
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card border-primary text-primary">
+                <div class="card-body">
+                    <h5 class="card-title">📦 Bienes Registrados</h5>
+                    <p class="text-muted">Una lista de todos los bienes registrados.</p>
+                    <p class="fs-4 fw-bold" th:text="${cantidadBienes}">0</p>
+                    <a th:href="@{/listaBienes}" class="btn btn-outline-primary btn-sm">Ver bienes</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card border-success text-success">
+                <div class="card-body">
+                    <h5 class="card-title">📄 Fichas Generadas</h5>
+                    <p class="text-muted">Genera una nueva ficha con los bienes existentes.</p>
+                    <p class="fs-4 fw-bold" th:text="${cantidadFichas}">0</p>
+                    <a th:href="@{/ficha/fichas}" class="btn btn-outline-success btn-sm">Ver fichas</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card border-dark text-dark">
+                <div class="card-body">
+                    <h5 class="card-title">➕ Crear Nuevo Bien</h5>
+                    <p class="text-muted">Acceso rápido al formulario de registro</p>
+                    <a th:href="@{/crearBien}" class="btn btn-dark btn-sm">Registrar bien</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-4 mb-4"
+         th:if="${#authorization.expression('hasRole(''ADMIN'')')}">
+        <div class="card border-danger text-danger">
+            <div class="card-body">
+                <h5 class="card-title">👤 Administración de Usuarios</h5>
+                <p class="text-muted">Gestiona usuarios, roles y accesos</p>
+                <a th:href="@{/admin/usuarios}" class="btn btn-outline-danger btn-sm">Administrar</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

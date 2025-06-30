@@ -1,44 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Lista Bienes</title>
+  <meta charset="UTF-8">
+  <title>Lista de Bienes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<table class="table" th:objet="${listaBienes}">
-  <thead>
-  <tr>
-    <th scope="col">#</th>
-    <th scope="col">Cod. Actual</th>
-    <th scope="col">Cod. Patrimonial</th>
-    <th scope="col">Denominacion</th>
-    <th scope="col">Marca</th>
-    <th scope="col">Modelo</th>
-    <th scope="col">Tipo</th>
-    <th scope="col">Serie o Dimension</th>
-    <th scope="col">Color</th>
-    <th scope="col">Situacion</th>
-    <th scope="col">Estado</th>
-    <th scope="col">Observaciones</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr th:each="b:${listaBienes}">
-    <th scope="row">1</th>
-    <td th:text="${b.codigoActual}"></td>
-    <td th:text="${b.codigoPatrimonial}"></td>
-    <td th:text="${b.codigoAnterior}"></td>
-    <td th:text="${b.denominacion}"></td>
-    <td th:text="${b.marca}"></td>
-    <td th:text="${b.modelo}"></td>
-    <td th:text="${b.tipo}"></td>
-    <td th:text="${b.color}"></td>
-    <td th:text="${b.serie}"></td>
-    <td th:text="${b.situacion}"></td>
-    <td th:text="${b.estado}"></td>
-    <td th:text="${b.observaciones}"></td>
-  </tr>
-  </tbody>
-</table>
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Inventario de Bienes</h2>
+    <a th:href="@{/crearBien}" class="btn btn-outline-primary">
+      ➕ Nuevo Bien
+    </a>
+  </div>
+
+  <table class="table table-hover table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>#</th>
+      <th>Código Actual</th>
+      <th>Código Patrimonial</th>
+      <th>Código Anterior</th>
+      <th>Denominación</th>
+      <th>Marca</th>
+      <th>Modelo</th>
+      <th>Tipo</th>
+      <th>Color</th>
+      <th>Serie o Dimensión</th>
+      <th>Situación</th>
+      <th>Estado</th>
+      <th>Observaciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="b, stat : ${listaBienes}">
+      <td th:text="${stat.count}">1</td>
+      <td th:text="${b.codigoActual}">---</td>
+      <td th:text="${b.codigoPatrimonial}">---</td>
+      <td th:text="${b.codigoAnterior}">---</td>
+      <td th:text="${b.denominacion}">---</td>
+      <td th:text="${b.marca}">---</td>
+      <td th:text="${b.modelo}">---</td>
+      <td th:text="${b.tipo}">---</td>
+      <td th:text="${b.color}">---</td>
+      <td th:text="${b.serie}">---</td>
+      <td th:text="${b.situacion}">---</td>
+      <td th:text="${b.estado}">---</td>
+      <td th:text="${b.observaciones}">---</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 </body>
 </html>
